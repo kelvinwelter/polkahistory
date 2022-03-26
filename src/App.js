@@ -1,6 +1,7 @@
 import { useEffect, useState} from 'react';
 import { ApiPromise, WsProvider } from '@polkadot/api';
 import { formatBalance } from '@polkadot/util';
+import { Button, Flex, Center, Text, Stack, Heading } from '@chakra-ui/react';
 
 import Header from './components/Header';
 
@@ -63,10 +64,33 @@ function App() {
   }, []);
 
   return (
-    <>
+    <Flex as="main" direction="column">
       <Header />
-      <button onClick={searchByDate}>test</button>
-    </>
+      <Center flexGrow={1} paddingX={2}>
+      <Stack
+        textAlign={'center'}
+        align={'center'}
+        spacing={{ base: 8, md: 10 }}
+        py={{ base: 20, md: 28 }}>
+        <Heading
+          fontWeight={600}
+          fontSize={{ base: '3xl', sm: '4xl', md: '6xl' }}
+          lineHeight={'110%'}>
+          Know your account balance{' '}
+          <Text as={'span'} color="#E6007A">
+            on any date
+          </Text>
+        </Heading>
+        <Text color={'gray.500'} maxW={'3xl'}>
+          Find out how many DOTs you had on the last day of last year to file your income tax. 
+          Find out how many DOTs you had at any given date and time.
+        </Text>
+        <Stack spacing={6} direction={'row'}>
+          <Button colorScheme="pink" onClick={searchByDate}>Search</Button>
+        </Stack>
+      </Stack>
+      </Center>
+    </Flex>
   );
 }
 
