@@ -1,0 +1,17 @@
+{
+    "heading.knowAccountBalance": "Descubra o saldo da sua conta",
+    "heading.anyDate": "em qualquer data",
+    "heading.introText": "Precisa declarar suas DOTs no imposto de renda? Busque o seu saldo no último dia do ano anterior. Polkahistory permite que você busque seu saldo em qualquer data e hora.",
+
+    "placeholder.connectingPolkadot": "Conectando-se a Polkadot...",
+    "placeholder.newSearch": "Nova busca",
+    "placeholder.accountBalance": "Saldo da conta",
+    "placeholder.on": "Em",
+
+    "search.polkadotAddress": "Endereço Polkadot",
+    "search.searchingBalance": "Buscando saldo...",
+    "search.search": "Buscar",
+
+    "footer.madeBy": "Feito no 🇧🇷 por Kelvin Welter",
+    "footer.buyMeCoffee": "Me compre um café: 12ENWcCZ6PsMPMULpYNhoevt2cVQypcR7sBEujzQJovJVdg8"
+}

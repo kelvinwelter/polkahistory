@@ -1,12 +1,15 @@
 import React from 'react';
 import { Stack, Input, Button } from '@chakra-ui/react';
 import DatePicker from '../Datepicker';
+import { FormattedMessage, useIntl } from 'react-intl';
 
 export default function SearchWrapper({ setAddress, address, invalidAddress, dateTime, setDateTime, isLoading, handleSearch }) {
+  const intl = useIntl();
+
   return (
     <Stack spacing={4} direction={'column'}>
               <Input 
-                placeholder='Polkadot address' 
+                placeholder={intl.formatMessage({ id: "search.polkadotAddress", defaultMessage: "Polkadot address" })} 
                 onChange={(event) => setAddress(event.target.value)} 
                 value={address}
                 isInvalid={invalidAddress}
@@ -19,12 +22,12 @@ export default function SearchWrapper({ setAddress, address, invalidAddress, dat
               />
               <Button
                 isLoading={isLoading}
-                loadingText="Buscando balanço..." 
+                loadingText={intl.formatMessage({ id: "search.searchingBalance", defaultMessage: "Searching balance..." })}
                 disabled={isLoading} 
                 colorScheme="pink"
                 onClick={handleSearch}
               >
-                Search
+                <FormattedMessage id="search.search" defaultMessage="Search" />
               </Button>
             </Stack>
   )

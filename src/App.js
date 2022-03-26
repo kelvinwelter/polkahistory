@@ -1,5 +1,6 @@
 import { useEffect, useState} from 'react';
 import { ApiPromise, WsProvider } from '@polkadot/api';
+import { FormattedMessage } from 'react-intl';
 import { 
   Flex, 
   Center, 
@@ -77,22 +78,28 @@ function App() {
           <Heading
             fontWeight={600}
             fontSize={{ base: '3xl', sm: '4xl', md: '6xl' }}
-            lineHeight={'110%'}>
-            Know your account balance{' '}
+            lineHeight={'110%'}
+          >
+            <FormattedMessage id="heading.knowAccountBalance" defaultMessage="Know your account balance" />
+            {' '}
             <Text as={'span'} color="#E6007A">
-              on any date
+              <FormattedMessage id="heading.anyDate" defaultMessage="on any date" />
             </Text>
           </Heading>
           <Text color={'gray.500'} maxW={'3xl'}>
-            Find out how many DOTs you had on the last day of last year to file your income tax. 
-            Find out how many DOTs you had at any given date and time.
+            <FormattedMessage 
+              id="heading.introText" 
+              defaultMessage="Find out how many DOTs you had on the last day of last year to file your income tax. Find out how many DOTs you had at any given date and time." 
+            />
           </Text>
           {api ? 
             modeMap[mode]
             : 
             <Stack spacing={2} direction={'row'}>
               <CircularProgress size={'20px'} isIndeterminate color="#E6007A" />
-              <Text>Connecting to Polkadot...</Text>
+              <Text>
+                <FormattedMessage id="placeholder.connectingPolkadot" defaultMessage="Connecting to Polkadot..." />
+              </Text>
             </Stack>
             }
         </Stack>
