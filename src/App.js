@@ -1,6 +1,8 @@
 import { useEffect, useState} from 'react';
 import { ApiPromise, WsProvider } from '@polkadot/api';
-import { formatBalance } from '@polkadot/util'
+import { formatBalance } from '@polkadot/util';
+
+import Header from './components/Header';
 
 function App() {
   const [api, setApi] = useState(null);
@@ -61,9 +63,10 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
+    <>
+      <Header />
       <button onClick={searchByDate}>test</button>
-    </div>
+    </>
   );
 }
 
