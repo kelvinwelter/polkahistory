@@ -1,7 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState} from 'react';
+import { ApiPromise, WsProvider } from '@polkadot/api';
 
 function App() {
+  const [api, setApi] = useState(null);
+
+  useEffect(() => {
+    const constructApiInstance = async () => {
+      const wsProvider = new WsProvider('wss://rpc.polkadot.io');
+      const newApi = await ApiPromise.create({ provider: wsProvider });
+      setApi(newApi);
+    }
+
+    constructApiInstance();
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
