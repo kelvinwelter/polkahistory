@@ -1,16 +1,33 @@
 import { useEffect, useState} from 'react';
 import { ApiPromise, WsProvider } from '@polkadot/api';
 import { formatBalance } from '@polkadot/util';
-import { Button, Flex, Center, Text, Stack, Heading } from '@chakra-ui/react';
+import { 
+  Button,
+  Flex, 
+  Center, 
+  Text, 
+  Stack, 
+  Heading, 
+  CircularProgress, 
+  Stat, 
+  StatLabel, 
+  StatNumber, 
+  StatHelpText 
+} from '@chakra-ui/react';
 
 import Header from './components/Header';
 import DatePicker from './components/Datepicker';
 
 function App() {
-  const [api, setApi] = useState(null);
   const [dateTime, setDateTime] = useState(new Date());
+  const [isLoading, setIsLoading] = useState(false);
+  const [balance, setBalance] = useState(null);
+  const [api, setApi] = useState(null);
 
   const searchByDate = async () => {
+    setIsLoading(true);
+    setBalance(null);
+
     // Retrieve the current block header
     const lastHdr = await api.rpc.chain.getHeader();
     
@@ -18,7 +35,7 @@ function App() {
     // So we use a margin of error of 10 seconds.
     const errorMargin = 1000*60;
 
-    const targetDateTimestamp = new Date(2021, 12, 31).getTime();
+    const targetDateTimestamp = dateTime.getTime();
 
     let lowerBlockNumber = 0;
     let upperBlockNumber = Number(lastHdr.number);
@@ -53,6 +70,9 @@ function App() {
     const free = formatBalance(balance.free, { withSiFull: true }, chainDecimals);
     const reserved = formatBalance(balance.reserved, { withSiFull: true }, chainDecimals);
     console.log('Formatted balance:', `{"free": "${free}", "unit": "${defaults.unit}", "reserved": "${reserved}", "nonce": "${nonce.toHuman()}"}`);
+
+    setBalance({ unit: defaults.unit, free, reserved });
+    setIsLoading(false);
   }
 
   useEffect(() => {
@@ -69,34 +89,49 @@ function App() {
     <Flex as="main" direction="column">
       <Header />
       <Center flexGrow={1} paddingX={2}>
-      <Stack
-        textAlign={'center'}
-        align={'center'}
-        spacing={{ base: 8, md: 10 }}
-        py={{ base: 20, md: 28 }}>
-        <Heading
-          fontWeight={600}
-          fontSize={{ base: '3xl', sm: '4xl', md: '6xl' }}
-          lineHeight={'110%'}>
-          Know your account balance{' '}
-          <Text as={'span'} color="#E6007A">
-            on any date
+        <Stack
+          textAlign={'center'}
+          align={'center'}
+          spacing={{ base: 8, md: 10 }}
+          py={{ base: 20, md: 28 }}>
+          <Heading
+            fontWeight={600}
+            fontSize={{ base: '3xl', sm: '4xl', md: '6xl' }}
+            lineHeight={'110%'}>
+            Know your account balance{' '}
+            <Text as={'span'} color="#E6007A">
+              on any date
+            </Text>
+          </Heading>
+          <Text color={'gray.500'} maxW={'3xl'}>
+            Find out how many DOTs you had on the last day of last year to file your income tax. 
+            Find out how many DOTs you had at any given date and time.
           </Text>
-        </Heading>
-        <Text color={'gray.500'} maxW={'3xl'}>
-          Find out how many DOTs you had on the last day of last year to file your income tax. 
-          Find out how many DOTs you had at any given date and time.
-        </Text>
-        <Stack spacing={6} direction={'column'}>
-          <DatePicker
-            showTimeInput
-            selectedDate={dateTime}
-            onChange={(d) => setDateTime(d)}
-            dateFormat="MMMM d, yyyy h:mm aa"
-          />
-          <Button colorScheme="pink" onClick={searchByDate}>Search</Button>
+          {api ? 
+            <Stack spacing={6} direction={'column'}>
+              <DatePicker
+                showTimeInput
+                selectedDate={dateTime}
+                onChange={(d) => setDateTime(d)}
+                dateFormat="MMMM d, yyyy h:mm aa"
+              />
+              <Button
+                isLoading={isLoading}
+                loadingText="Buscando balanço..." 
+                disabled={isLoading} 
+                colorScheme="pink"
+                onClick={searchByDate}
+              >
+                Search
+              </Button>
+            </Stack>
+            : 
+            <Stack spacing={2} direction={'row'}>
+              <CircularProgress size={'20px'} isIndeterminate color="#E6007A" />
+              <Text>Connecting to Polkadot...</Text>
+            </Stack>
+            }
         </Stack>
-      </Stack>
       </Center>
     </Flex>
   );
