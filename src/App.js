@@ -4,9 +4,11 @@ import { formatBalance } from '@polkadot/util';
 import { Button, Flex, Center, Text, Stack, Heading } from '@chakra-ui/react';
 
 import Header from './components/Header';
+import DatePicker from './components/Datepicker';
 
 function App() {
   const [api, setApi] = useState(null);
+  const [dateTime, setDateTime] = useState(new Date());
 
   const searchByDate = async () => {
     // Retrieve the current block header
@@ -85,7 +87,13 @@ function App() {
           Find out how many DOTs you had on the last day of last year to file your income tax. 
           Find out how many DOTs you had at any given date and time.
         </Text>
-        <Stack spacing={6} direction={'row'}>
+        <Stack spacing={6} direction={'column'}>
+          <DatePicker
+            showTimeInput
+            selectedDate={dateTime}
+            onChange={(d) => setDateTime(d)}
+            dateFormat="MMMM d, yyyy h:mm aa"
+          />
           <Button colorScheme="pink" onClick={searchByDate}>Search</Button>
         </Stack>
       </Stack>
