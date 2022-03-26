@@ -7,6 +7,7 @@ import {
   Text, 
   Stack, 
   Heading, 
+  Input,
   CircularProgress, 
   Stat, 
   StatLabel, 
@@ -17,21 +18,29 @@ import {
 import Header from './components/Header';
 import DatePicker from './components/Datepicker';
 import { searchByDate } from './utils/blockchainBinarySearch';
+import { validateAddress } from './utils/validateAddress';
 
 function App() {
+  const [invalidAddress, setInvalidAddress] = useState(false);
   const [dateTime, setDateTime] = useState(new Date());
   const [isLoading, setIsLoading] = useState(false);
   const [balance, setBalance] = useState(null);
+  const [address, setAddress] = useState('');
   const [api, setApi] = useState(null);
 
-  const handleSearch = async () => {
-    searchByDate({ 
-      address: '12xtAYsRUrmbniiWQqJtECiBQrMn8AypQcXhnQAc6RB6XkLW',
-      api,
-      dateTime,
-      setBalance,
-      setIsLoading
-    })
+  const handleSearch = () => {
+    if (validateAddress(address)) {
+      setInvalidAddress(false);
+      searchByDate({ 
+        address: '12xtAYsRUrmbniiWQqJtECiBQrMn8AypQcXhnQAc6RB6XkLW',
+        api,
+        dateTime,
+        setBalance,
+        setIsLoading
+      });
+    } else {
+      return setInvalidAddress(true);
+    }
   }
 
   useEffect(() => {
@@ -67,7 +76,13 @@ function App() {
             Find out how many DOTs you had at any given date and time.
           </Text>
           {api ? 
-            <Stack spacing={6} direction={'column'}>
+            <Stack spacing={4} direction={'column'}>
+              <Input 
+                placeholder='Polkadot address' 
+                onChange={(event) => setAddress(event.target.value)} 
+                value={address}
+                isInvalid={invalidAddress}
+              />
               <DatePicker
                 showTimeInput
                 selectedDate={dateTime}
