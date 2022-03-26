@@ -19,7 +19,6 @@ export async function searchByDate({ address, dateTime, api, setIsLoading, setBa
 
     while (lowerBlockNumber <= upperBlockNumber) {
         let middleBlockNumber = Math.floor((lowerBlockNumber + upperBlockNumber) / 2);
-        console.log(middleBlockNumber);
         const middleBlockHash = await api.rpc.chain.getBlockHash(middleBlockNumber);
         const middleBlockTimestamp = await api.query.timestamp.now.at(middleBlockHash);
 
@@ -33,18 +32,13 @@ export async function searchByDate({ address, dateTime, api, setIsLoading, setBa
         }
     }
 
-    // Retrieve the last timestamp
-    const now = await targetDecoratedApi.query.timestamp.now();
-    console.log(String(now));
-
     // Retrieve the account balance & nonce via the system module
-    const { nonce, data: balance } = await targetDecoratedApi.query.system.account(address);
+    const { data: balance } = await targetDecoratedApi.query.system.account(address);
     const chainDecimals = targetDecoratedApi.registry.chainDecimals[0];
     formatBalance.setDefaults({ unit: 'DOT' });
     const defaults = formatBalance.getDefaults();
     const free = formatBalance(balance.free, { withSiFull: true }, chainDecimals);
     const reserved = formatBalance(balance.reserved, { withSiFull: true }, chainDecimals);
-    console.log('Formatted balance:', `{"free": "${free}", "unit": "${defaults.unit}", "reserved": "${reserved}", "nonce": "${nonce.toHuman()}"}`);
 
     setBalance({ unit: defaults.unit, free, reserved });
     setIsLoading(false);
