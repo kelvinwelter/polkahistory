@@ -1,10 +1,10 @@
 import { FiGithub } from 'react-icons/fi';
 import { 
-    ButtonGroup,
     Flex,
     Heading,
     IconButton,
     Spacer,
+    Link
 } from '@chakra-ui/react';
 
 const Header = (props) => {
@@ -22,9 +22,9 @@ const Header = (props) => {
                 Polkahistory
             </Heading>
             <Spacer />
-            <ButtonGroup colorScheme="blackAlpha" variant="ghost" spacing="4">
+            <Link href="https://github.com/kelvinwelter/polkahistory" isExternal>
                 <IconButton icon={<FiGithub />} />
-            </ButtonGroup>
+            </Link>
         </Flex>
     )
 }
