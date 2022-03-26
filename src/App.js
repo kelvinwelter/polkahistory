@@ -32,7 +32,7 @@ function App() {
     if (validateAddress(address)) {
       setInvalidAddress(false);
       searchByDate({ 
-        address: '12xtAYsRUrmbniiWQqJtECiBQrMn8AypQcXhnQAc6RB6XkLW',
+        address,
         api,
         dateTime,
         setBalance,
@@ -104,6 +104,14 @@ function App() {
               <CircularProgress size={'20px'} isIndeterminate color="#E6007A" />
               <Text>Connecting to Polkadot...</Text>
             </Stack>
+            }
+            {balance ? 
+              <Stat border="1px solid #E2E8F0" borderRadius={12} py={4} px={16}>
+                <StatLabel>Account balance</StatLabel>
+                <StatNumber>{balance.free}</StatNumber>
+                <StatHelpText>On {dateTime.toLocaleString()}</StatHelpText>
+              </Stat>
+            : null
             }
         </Stack>
       </Center>
