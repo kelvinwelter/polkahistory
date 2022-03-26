@@ -10,6 +10,7 @@ import {
 } from '@chakra-ui/react';
 
 import Header from './components/Header';
+import Footer from './components/Footer';
 import SearchWrapper from './components/SearchWrapper';
 import BalanceWrapper from './components/BalanceWrapper';
 import { searchByDate } from './utils/blockchainBinarySearch';
@@ -96,6 +97,7 @@ function App() {
             }
         </Stack>
       </Center>
+      <Footer />
     </Flex>
   );
 }
