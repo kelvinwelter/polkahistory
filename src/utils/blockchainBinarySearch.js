@@ -1,6 +1,6 @@
 import { formatBalance } from '@polkadot/util';
 
-export async function searchByDate({ address, dateTime, api, setIsLoading, setBalance }) {
+export async function searchByDate({ address, dateTime, api, setIsLoading, setBalance, setMode }) {
     setIsLoading(true);
     setBalance(null);
 
@@ -48,4 +48,5 @@ export async function searchByDate({ address, dateTime, api, setIsLoading, setBa
 
     setBalance({ unit: defaults.unit, free, reserved });
     setIsLoading(false);
+    setMode('showBalance');
 }

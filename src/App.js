@@ -1,22 +1,17 @@
 import { useEffect, useState} from 'react';
 import { ApiPromise, WsProvider } from '@polkadot/api';
 import { 
-  Button,
   Flex, 
   Center, 
   Text, 
   Stack, 
   Heading, 
-  Input,
   CircularProgress, 
-  Stat, 
-  StatLabel, 
-  StatNumber, 
-  StatHelpText 
 } from '@chakra-ui/react';
 
 import Header from './components/Header';
-import DatePicker from './components/Datepicker';
+import SearchWrapper from './components/SearchWrapper';
+import BalanceWrapper from './components/BalanceWrapper';
 import { searchByDate } from './utils/blockchainBinarySearch';
 import { validateAddress } from './utils/validateAddress';
 
@@ -25,6 +20,7 @@ function App() {
   const [dateTime, setDateTime] = useState(new Date());
   const [isLoading, setIsLoading] = useState(false);
   const [balance, setBalance] = useState(null);
+  const [mode, setMode] = useState('search');
   const [address, setAddress] = useState('');
   const [api, setApi] = useState(null);
 
@@ -36,11 +32,26 @@ function App() {
         api,
         dateTime,
         setBalance,
-        setIsLoading
+        setIsLoading,
+        setMode
       });
     } else {
       return setInvalidAddress(true);
     }
+  }
+
+  const modeMap = {
+    search: 
+      <SearchWrapper 
+        address={address} 
+        setAddress={setAddress} 
+        dateTime={dateTime} 
+        setDateTime={setDateTime} 
+        handleSearch={handleSearch}
+        invalidAddress={invalidAddress}
+        isLoading={isLoading}
+      />,
+    showBalance: <BalanceWrapper balance={balance} dateTime={dateTime} setMode={setMode} />
   }
 
   useEffect(() => {
@@ -76,42 +87,12 @@ function App() {
             Find out how many DOTs you had at any given date and time.
           </Text>
           {api ? 
-            <Stack spacing={4} direction={'column'}>
-              <Input 
-                placeholder='Polkadot address' 
-                onChange={(event) => setAddress(event.target.value)} 
-                value={address}
-                isInvalid={invalidAddress}
-              />
-              <DatePicker
-                showTimeInput
-                selectedDate={dateTime}
-                onChange={(d) => setDateTime(d)}
-                dateFormat="MMMM d, yyyy h:mm aa"
-              />
-              <Button
-                isLoading={isLoading}
-                loadingText="Buscando balanço..." 
-                disabled={isLoading} 
-                colorScheme="pink"
-                onClick={handleSearch}
-              >
-                Search
-              </Button>
-            </Stack>
+            modeMap[mode]
             : 
             <Stack spacing={2} direction={'row'}>
               <CircularProgress size={'20px'} isIndeterminate color="#E6007A" />
               <Text>Connecting to Polkadot...</Text>
             </Stack>
-            }
-            {balance ? 
-              <Stat border="1px solid #E2E8F0" borderRadius={12} py={4} px={16}>
-                <StatLabel>Account balance</StatLabel>
-                <StatNumber>{balance.free}</StatNumber>
-                <StatHelpText>On {dateTime.toLocaleString()}</StatHelpText>
-              </Stat>
-            : null
             }
         </Stack>
       </Center>
