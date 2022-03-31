@@ -7,7 +7,8 @@ import {
   Text, 
   Stack, 
   Heading, 
-  CircularProgress, 
+  CircularProgress,
+  useColorMode
 } from '@chakra-ui/react';
 
 import Header from '../components/Header';
@@ -18,6 +19,8 @@ import { searchByDate } from '../utils/blockchainBinarySearch';
 import { validateAddress } from '../utils/validateAddress';
 
 export default function PolkadotSearch() {
+    const { colorMode, toggleColorMode } = useColorMode();
+
     const [invalidAddress, setInvalidAddress] = useState(false);
     const [dateTime, setDateTime] = useState(new Date());
     const [isLoading, setIsLoading] = useState(false);
@@ -57,6 +60,10 @@ export default function PolkadotSearch() {
     }
   
     useEffect(() => {
+      if (colorMode === 'dark') {
+        toggleColorMode();
+      }
+
       const constructApiInstance = async () => {
         const wsProvider = new WsProvider('wss://rpc.polkadot.io');
         const newApi = await ApiPromise.create({ provider: wsProvider });

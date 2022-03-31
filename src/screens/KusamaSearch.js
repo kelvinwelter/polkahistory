@@ -8,6 +8,7 @@ import {
   Stack, 
   Heading, 
   CircularProgress, 
+  useColorMode
 } from '@chakra-ui/react';
 
 import Header from '../components/Header';
@@ -18,6 +19,8 @@ import { searchByDate } from '../utils/blockchainBinarySearch';
 import { validateAddress } from '../utils/validateAddress';
 
 export default function KusamaSearch() {
+    const { colorMode, toggleColorMode } = useColorMode();
+
     const [invalidAddress, setInvalidAddress] = useState(false);
     const [dateTime, setDateTime] = useState(new Date());
     const [isLoading, setIsLoading] = useState(false);
@@ -25,7 +28,7 @@ export default function KusamaSearch() {
     const [mode, setMode] = useState('search');
     const [address, setAddress] = useState('');
     const [api, setApi] = useState(null);
-  
+
     const handleSearch = () => {
       if (validateAddress(address)) {
         setInvalidAddress(false);
@@ -57,17 +60,21 @@ export default function KusamaSearch() {
     }
   
     useEffect(() => {
+      if (colorMode === 'light') {
+        toggleColorMode();
+      }
+
       const constructApiInstance = async () => {
         const wsProvider = new WsProvider('wss://rpc.polkadot.io');
         const newApi = await ApiPromise.create({ provider: wsProvider });
         setApi(newApi);
       }
-  
+      
       constructApiInstance();
     }, []);
   
     return (
-      <Flex as="main" direction="column" >
+      <Flex as="main" direction="column">
         <Header />
         <Center flexGrow={1} paddingX={2}>
           <Stack

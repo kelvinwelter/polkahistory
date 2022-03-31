@@ -5,6 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 import { IntlProvider } from 'react-intl';
 
 import App from './App';
+import theme from './styles/theme';
 import './styles/global.css';
 import English from './locales/en.json';
 import Portuguese from './locales/pt.json';
@@ -21,7 +22,7 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <IntlProvider locale={localLanguage} messages={applicationLanguage} >
-        <ChakraProvider>
+        <ChakraProvider theme={theme}>
           <App />
         </ChakraProvider>
       </IntlProvider>
