@@ -68,7 +68,7 @@ export default function PolkadotSearch() {
   
     return (
       <Flex as="main" direction="column">
-        <Header />
+        <Header onPolkadotPage />
         <Center flexGrow={1} paddingX={2}>
           <Stack
             textAlign={'center'}
