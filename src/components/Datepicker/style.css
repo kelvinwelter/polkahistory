@@ -9,6 +9,7 @@
     --blue200: var(--chakra-colors-gray-200);
     --blue100: var(--chakra-colors-gray-100);
     --monthBackground: var(--chakra-colors-white);
+    --timeBackground: var(--chakra-colors-white);
     --text:var(--chakra-colors-black);
     --negative-text:var(--chakra-colors-white);
   }
@@ -23,6 +24,7 @@
     --blue200: var(--chakra-colors-gray-600);
     --blue100: var(--chakra-colors-gray-800);
     --monthBackground: var(--chakra-colors-gray-700);
+    --timeBackground: var(--chakra-colors-gray-700);
     --text:var(--chakra-colors-gray-200);
     --negative-text:var(--chakra-colors-black);
   }
@@ -114,6 +116,24 @@
   font-size: inherit;
   font-weight: 600;
   color: var(--text)
+  }
+
+  .react-datepicker__input-time-container {
+    background-color: var(--timeBackground);
+    margin: 0;
+    padding: 0 0.4rem 0.4rem 0.4rem;
+  }
+
+  .react-datepicker-time__caption,
+  .react-datepicker-time__input {
+    background-color: var(--timeBackground);
+    color: var(--text);
+  }
+
+  .react-datepicker-time__input > .react-datepicker-time__input {
+    border-radius: 0.3rem;
+    border: 1px solid;
+    border-color: var(--light-gray);
   }
   
   .react-datepicker__month{
