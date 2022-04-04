@@ -9,7 +9,7 @@ export default function SearchWrapper({ setAddress, address, invalidAddress, dat
   return (
     <Stack spacing={4} direction={'column'}>
               <Input 
-                placeholder={intl.formatMessage(onPolkadotPage ? { id: "search.polkadotAddress", defaultMessage: "Polkadot address" } : { id: "search.KusamaAddress", defaultMessage: "Kusama address" })} 
+                placeholder={intl.formatMessage(onPolkadotPage ? { id: "search.polkadotAddress", defaultMessage: "Polkadot address" } : { id: "search.kusamaAddress", defaultMessage: "Kusama address" })} 
                 onChange={(event) => setAddress(event.target.value)} 
                 value={address}
                 isInvalid={invalidAddress}
