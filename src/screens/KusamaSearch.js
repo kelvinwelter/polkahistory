@@ -95,8 +95,8 @@ export default function KusamaSearch() {
             </Heading>
             <Text color={'gray.500'} maxW={'3xl'}>
               <FormattedMessage 
-                id="heading.introText" 
-                defaultMessage="Find out how many DOTs you had on the last day of last year to file your income tax. Find out how many DOTs you had at any given date and time." 
+                id="heading.introTextKusama" 
+                defaultMessage="Find out how many KSMs you had on the last day of last year to file your income tax. Find out how many KSMs you had at any given date and time." 
               />
             </Text>
             {api ? 
@@ -105,7 +105,7 @@ export default function KusamaSearch() {
               <Stack spacing={2} direction={'row'}>
                 <CircularProgress size={'20px'} isIndeterminate color="#E6007A" />
                 <Text>
-                  <FormattedMessage id="placeholder.connectingPolkadot" defaultMessage="Connecting to Polkadot..." />
+                  <FormattedMessage id="placeholder.connectingKusama" defaultMessage="Connecting to Kusama..." />
                 </Text>
               </Stack>
               }

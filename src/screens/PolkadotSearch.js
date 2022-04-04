@@ -55,6 +55,7 @@ export default function PolkadotSearch() {
           handleSearch={handleSearch}
           invalidAddress={invalidAddress}
           isLoading={isLoading}
+          onPolkadotPage={true}
         />,
       showBalance: <BalanceWrapper balance={balance} dateTime={dateTime} setMode={setMode} />
     }

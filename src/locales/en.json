@@ -2,13 +2,16 @@
     "heading.knowAccountBalance": "Know your account balance",
     "heading.anyDate": "on any date",
     "heading.introText": "Find out how many DOTs you had on the last day of last year to file your income tax. Find out how many DOTs you had at any given date and time.",
+    "heading.introTextKusama": "Find out how many KSMs you had on the last day of last year to file your income tax. Find out how many KSMs you had at any given date and time.",
 
     "placeholder.connectingPolkadot": "Connecting to Polkadot...",
+    "placeholder.connectingKusama": "Connecting to Kusama...",
     "placeholder.newSearch": "New search",
     "placeholder.accountBalance": "Account balance",
     "placeholder.on": "On",
 
     "search.polkadotAddress": "Polkadot address",
+    "search.kusamaAddress": "Kusama address",
     "search.searchingBalance": "Searching balance...",
     "search.search": "Search",
 
