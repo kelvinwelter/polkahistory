@@ -112,7 +112,7 @@ export default function PolkadotSearch() {
               }
           </Stack>
         </Center>
-        <Footer />
+        <Footer onPolkadotPage />
       </Flex>
     );
 }
