@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { ChakraProvider } from '@chakra-ui/react';
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter } from 'react-router-dom';
 import { IntlProvider } from 'react-intl';
 
 import App from './App';
@@ -21,7 +21,7 @@ if (localLanguage.startsWith('en')) {
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <IntlProvider locale={localLanguage} messages={applicationLanguage} >
+      <IntlProvider locale={localLanguage} messages={applicationLanguage}>
         <ChakraProvider theme={theme}>
           <App />
         </ChakraProvider>

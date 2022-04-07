@@ -1,21 +1,21 @@
 {
-    "heading.knowAccountBalance": "Know your account balance",
-    "heading.anyDate": "on any date",
-    "heading.introText": "Find out how many DOTs you had on the last day of last year to file your income tax. Find out how many DOTs you had at any given date and time.",
-    "heading.introTextKusama": "Find out how many KSMs you had on the last day of last year to file your income tax. Find out how many KSMs you had at any given date and time.",
+  "heading.knowAccountBalance": "Know your account balance",
+  "heading.anyDate": "on any date",
+  "heading.introText": "Find out how many DOTs you had on the last day of last year to file your income tax. Find out how many DOTs you had at any given date and time.",
+  "heading.introTextKusama": "Find out how many KSMs you had on the last day of last year to file your income tax. Find out how many KSMs you had at any given date and time.",
 
-    "placeholder.connectingPolkadot": "Connecting to Polkadot...",
-    "placeholder.connectingKusama": "Connecting to Kusama...",
-    "placeholder.newSearch": "New search",
-    "placeholder.accountBalance": "Account balance",
-    "placeholder.on": "On",
+  "placeholder.connectingPolkadot": "Connecting to Polkadot...",
+  "placeholder.connectingKusama": "Connecting to Kusama...",
+  "placeholder.newSearch": "New search",
+  "placeholder.accountBalance": "Account balance",
+  "placeholder.on": "On",
 
-    "search.polkadotAddress": "Polkadot address",
-    "search.kusamaAddress": "Kusama address",
-    "search.searchingBalance": "Searching balance...",
-    "search.search": "Search",
+  "search.polkadotAddress": "Polkadot address",
+  "search.kusamaAddress": "Kusama address",
+  "search.searchingBalance": "Searching balance...",
+  "search.search": "Search",
 
-    "footer.madeBy": "Made in 🇧🇷 by Kelvin Welter",
-    "footer.buyMeCoffee": "Buy me a coffee (with Polkadot): 12ENWcCZ6PsMPMULpYNhoevt2cVQypcR7sBEujzQJovJVdg8",
-    "footer.buyMeCoffeeKusama": "Buy me a coffee (with Kusama): DbGed9Qr9Ht9oEftpFb1gpo4B2SMC7Tcx2jhBVwgtMdM77v"
+  "footer.madeBy": "Made in 🇧🇷 by Kelvin Welter",
+  "footer.buyMeCoffee": "Buy me a coffee (with Polkadot): 12ENWcCZ6PsMPMULpYNhoevt2cVQypcR7sBEujzQJovJVdg8",
+  "footer.buyMeCoffeeKusama": "Buy me a coffee (with Kusama): DbGed9Qr9Ht9oEftpFb1gpo4B2SMC7Tcx2jhBVwgtMdM77v"
 }
