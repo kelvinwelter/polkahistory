@@ -18,10 +18,10 @@ afterEach(() => {
 });
 
 it("renders with Polkadot texts", () => {
-    render(
-      <TestWrapper>
-        <PolkadotSearch />
-      </TestWrapper>,
-      container);
-    expect(container.textContent).toContain("Know your account balance on any date")
+  render(
+    <TestWrapper>
+      <PolkadotSearch />
+    </TestWrapper>,
+    container);
+  expect(container.textContent).toContain("Know your account balance on any date")
 });

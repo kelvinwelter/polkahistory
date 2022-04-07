@@ -8,27 +8,27 @@ export default function SearchWrapper({ setAddress, address, invalidAddress, dat
 
   return (
     <Stack spacing={4} direction={'column'}>
-              <Input 
-                placeholder={intl.formatMessage(onPolkadotPage ? { id: "search.polkadotAddress", defaultMessage: "Polkadot address" } : { id: "search.kusamaAddress", defaultMessage: "Kusama address" })} 
-                onChange={(event) => setAddress(event.target.value)} 
-                value={address}
-                isInvalid={invalidAddress}
-              />
-              <DatePicker
-                showTimeInput
-                selectedDate={dateTime}
-                onChange={(d) => setDateTime(d)}
-                dateFormat="MMMM d, yyyy h:mm aa"
-              />
-              <Button
-                isLoading={isLoading}
-                loadingText={intl.formatMessage({ id: "search.searchingBalance", defaultMessage: "Searching balance..." })}
-                disabled={isLoading} 
-                colorScheme="pink"
-                onClick={handleSearch}
-              >
-                <FormattedMessage id="search.search" defaultMessage="Search" />
-              </Button>
-            </Stack>
+      <Input 
+        placeholder={intl.formatMessage(onPolkadotPage ? { id: "search.polkadotAddress", defaultMessage: "Polkadot address" } : { id: "search.kusamaAddress", defaultMessage: "Kusama address" })} 
+        onChange={(event) => setAddress(event.target.value)} 
+        value={address}
+        isInvalid={invalidAddress}
+      />
+      <DatePicker
+        showTimeInput
+        selectedDate={dateTime}
+        onChange={(d) => setDateTime(d)}
+        dateFormat="MMMM d, yyyy h:mm aa"
+      />
+      <Button
+        isLoading={isLoading}
+        loadingText={intl.formatMessage({ id: "search.searchingBalance", defaultMessage: "Searching balance..." })}
+        disabled={isLoading} 
+        colorScheme="pink"
+        onClick={handleSearch}
+      >
+        <FormattedMessage id="search.search" defaultMessage="Search" />
+      </Button>
+    </Stack>
   )
 }
