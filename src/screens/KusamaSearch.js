@@ -38,7 +38,8 @@ export default function KusamaSearch() {
         dateTime,
         setBalance,
         setIsLoading,
-        setMode
+        setMode,
+        isPolkadot: false
       });
     } else {
       return setInvalidAddress(true);
@@ -66,7 +67,7 @@ export default function KusamaSearch() {
     }
 
     const constructApiInstance = async () => {
-      const wsProvider = new WsProvider('wss://rpc.polkadot.io');
+      const wsProvider = new WsProvider('wss://kusama-rpc.polkadot.io');
       const newApi = await ApiPromise.create({ provider: wsProvider });
       setApi(newApi);
     };

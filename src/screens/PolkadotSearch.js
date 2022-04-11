@@ -38,7 +38,8 @@ export default function PolkadotSearch() {
         dateTime,
         setBalance,
         setIsLoading,
-        setMode
+        setMode,
+        isPolkadot: true
       });
     } else {
       return setInvalidAddress(true);
@@ -83,13 +84,11 @@ export default function PolkadotSearch() {
           textAlign={'center'}
           align={'center'}
           spacing={{ base: 8, md: 10 }}
-          py={{ base: 20, md: 28 }}
-        >
+          py={{ base: 20, md: 28 }}>
           <Heading
             fontWeight={600}
             fontSize={{ base: '3xl', sm: '4xl', md: '6xl' }}
-            lineHeight={'110%'}
-          >
+            lineHeight={'110%'}>
             <FormattedMessage
               id="heading.knowAccountBalance"
               defaultMessage="Know your account balance"

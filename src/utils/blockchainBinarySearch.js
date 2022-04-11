@@ -1,6 +1,14 @@
 import { formatBalance } from '@polkadot/util';
 
-export async function searchByDate({ address, dateTime, api, setIsLoading, setBalance, setMode }) {
+export async function searchByDate({
+  address,
+  dateTime,
+  api,
+  setIsLoading,
+  setBalance,
+  setMode,
+  isPolkadot
+}) {
   setIsLoading(true);
   setBalance(null);
 
@@ -35,7 +43,7 @@ export async function searchByDate({ address, dateTime, api, setIsLoading, setBa
   // Retrieve the account balance & nonce via the system module
   const { data: balance } = await targetDecoratedApi.query.system.account(address);
   const chainDecimals = targetDecoratedApi.registry.chainDecimals[0];
-  formatBalance.setDefaults({ unit: 'DOT' });
+  formatBalance.setDefaults({ unit: isPolkadot ? 'DOT' : 'KSM' });
   const defaults = formatBalance.getDefaults();
   const free = formatBalance(balance.free, { withSiFull: true }, chainDecimals);
   const reserved = formatBalance(balance.reserved, { withSiFull: true }, chainDecimals);
