@@ -135,6 +135,11 @@
   border-color: var(--light-gray);
 }
 
+.react-datepicker__day.react-datepicker__day--disabled {
+  cursor: default;
+  color: #ccc;
+}
+
 .react-datepicker__month {
   background-color: var(--monthBackground);
   margin: 0;
@@ -163,7 +168,7 @@
   color: var(--text);
 }
 
-.react-datepicker__day:hover {
+.react-datepicker__day:hover:not(.react-datepicker__day--disabled) {
   background: var(--blue200);
 }
 

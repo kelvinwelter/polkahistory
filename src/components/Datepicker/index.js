@@ -18,6 +18,7 @@ const DatePicker = ({
     // set className to "light-theme-original" ↓↓↓↓
     <div className={isLight ? 'light-theme' : 'dark-theme'}>
       <ReactDatePicker
+        maxDate={new Date()}
         selected={selectedDate}
         onChange={onChange}
         isClearable={isClearable}
