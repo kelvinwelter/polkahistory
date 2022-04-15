@@ -12,6 +12,7 @@
   --timeBackground: var(--chakra-colors-white);
   --text: var(--chakra-colors-black);
   --negative-text: var(--chakra-colors-white);
+  --disabledText: var(--light-gray);
 }
 .dark-theme {
   --light-gray: var(--chakra-colors-gray-600);
@@ -27,6 +28,7 @@
   --timeBackground: var(--chakra-colors-gray-700);
   --text: var(--chakra-colors-gray-200);
   --negative-text: var(--chakra-colors-black);
+  --disabledText: #535d68;
 }
 
 /* if you dont want to use chakra's theme use this class in the wrapping div. These are the exact original values */
@@ -137,7 +139,7 @@
 
 .react-datepicker__day.react-datepicker__day--disabled {
   cursor: default;
-  color: #ccc;
+  color: var(--disabledText);
 }
 
 .react-datepicker__month {
