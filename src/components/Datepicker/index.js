@@ -10,6 +10,7 @@ const DatePicker = ({
   onChange,
   isClearable = false,
   showPopperArrow = false,
+  onPolkadotPage,
   ...props
 }) => {
   const isLight = useColorMode().colorMode === 'light'; //you can check what theme you are using right now however you want
@@ -18,6 +19,7 @@ const DatePicker = ({
     // set className to "light-theme-original" ↓↓↓↓
     <div className={isLight ? 'light-theme' : 'dark-theme'}>
       <ReactDatePicker
+        minDate={new Date(onPolkadotPage ? '2020/05/01' : '2019/08/01')}
         maxDate={new Date()}
         selected={selectedDate}
         onChange={onChange}

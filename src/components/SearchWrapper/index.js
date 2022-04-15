@@ -32,6 +32,7 @@ export default function SearchWrapper({
         selectedDate={dateTime}
         onChange={(d) => setDateTime(d)}
         dateFormat="MMMM d, yyyy h:mm aa"
+        onPolkadotPage={onPolkadotPage}
       />
       <Button
         isLoading={isLoading}
@@ -41,8 +42,7 @@ export default function SearchWrapper({
         })}
         disabled={isLoading}
         colorScheme="pink"
-        onClick={handleSearch}
-      >
+        onClick={handleSearch}>
         <FormattedMessage id="search.search" defaultMessage="Search" />
       </Button>
     </Stack>
