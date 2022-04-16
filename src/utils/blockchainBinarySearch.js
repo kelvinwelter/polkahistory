@@ -43,12 +43,12 @@ export async function searchByDate({
   // Retrieve the account balance & nonce via the system module
   const { data: balance } = await targetDecoratedApi.query.system.account(address);
   const chainDecimals = targetDecoratedApi.registry.chainDecimals[0];
-  formatBalance.setDefaults({ unit: isPolkadot ? 'DOT' : 'KSM' });
   const defaults = formatBalance.getDefaults();
-  const free = formatBalance(balance.free, { withSiFull: true }, chainDecimals);
+  const free = formatBalance(balance.free, { withSi: false, forceUnit: '-' }, chainDecimals);
   const reserved = formatBalance(balance.reserved, { withSiFull: true }, chainDecimals);
+  const freeBalanceToShow = `${free} ${isPolkadot ? 'DOT' : 'KSM'}`;
 
-  setBalance({ unit: defaults.unit, free, reserved });
+  setBalance({ unit: defaults.unit, free: freeBalanceToShow, reserved });
   setIsLoading(false);
   setMode('showBalance');
 }
